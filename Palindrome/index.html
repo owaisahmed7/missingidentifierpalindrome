@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Result: <span class="result"></span></h4>
+
+    <script>
+        function isPalindrome(str) {
+            const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            
+            if (cleanStr.length <= 1) {
+                return true;
+            }
+            
+            if (cleanStr[0] !== cleanStr[cleanStr.length - 1]) {
+                return false;
+            }
+            
+            return isPalindrome(cleanStr.substring(1, cleanStr.length - 1));
+        }
+
+        let input = prompt("Enter a string to check if it's a palindrome:");
+        let resultElement = document.querySelector(".result");
+
+        if (input !== null) {
+            let result = isPalindrome(input);
+            resultElement.textContent = result ? "Yes, it's a palindrome" : "No, it's not a palindrome";
+        } else {
+            resultElement.textContent = "No input provided";
+        }
+    </script>
+</body>
+</html>
